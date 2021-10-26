@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+}
+
+section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(#f00, rgba(0, 0, 0, 0.5)),
+    url(./black-brick-wall-textured-background.jpg);
+
+  /*Blend the image with gradient  */
+  background-blend-mode: multiply;
+
+  animation: animateBgColor 5s linear infinite;
+}
+
+@keyframes animateBgColor {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+section::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(rgba(255, 0, 0, 0.75), transparent, transparent);
+}
+
+section::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(rgba(255, 0, 0, 0.75), transparent, transparent);
+  border-radius: 50%;
+}
+
+.icon {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+  text-align: center;
+}
+
+.icon svg path {
+  stroke: #fff;
+  stroke-width: 10px;
+  fill: transparent;
+  filter: drop-shadow(0 20px 10px #000) blur(2px);
+}
